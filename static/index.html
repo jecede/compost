@@ -3,61 +3,122 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Compost</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <style>
-        body {
-            padding-top: 5rem;
-            padding-left: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link href="static/sidebar.css" rel="stylesheet">
 </head>
 <body>
 
-<div id="app">
+<div id="wrapper" class="toggled">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Compost
+                </a>
+            </li>
+            <li>
+                <a href="#">Instances</a>
+            </li>
+            <li>
+                <a href="#">Projects</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-play" aria-hidden="true"></i> Start existing application</a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add new application</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
 
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="#">Compost</a>
-        <button class="btn btn-outline-secondary"><i class="fa fa-play" aria-hidden="true"></i> Start existing application</button>
-        <button class="btn btn-outline-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add new application</button>
-    </nav>
-
-    <div class="container-fluid">
-        <h2>Dashboard</h2>
-        <!-- Example row of columns -->
-        <div class="row">
-            <div v-for="project in projects" class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <span>{{project.name}}</span>
-                    <span>
-                        <i class="fa fa-2x fa-pause" aria-hidden="true"></i>
-                        <i class="fa fa-2x fa-stop" aria-hidden="true"></i>
-                        <i class="fa fa-2x fa-trash" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li v-for="container in project.containers" class="list-group-item d-flex justify-content-between">
-                        {{container.name}}
-                        <div>
-                            <button class="" title="Console"><i class="fa fa-terminal" aria-hidden="true"></i></button>
-                            <button title="Logs"><i class="fa fa-list" aria-hidden="true"></i></button>
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Instances</h1>
+                    <div class="row">
+                        <div v-for="project in projects" class="card">
+                            <div class="card-header d-flex justify-content-between">
+                                <span>{{project.name}}</span>
+                                <span>status: {{project.status}}</span>
+                                <span>
+                                    <i class="fa fa-2x fa-pause" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-stop" aria-hidden="true"></i>
+                                    <i class="fa fa-2x fa-trash" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li v-for="container in project.containers"
+                                    class="list-group-item d-flex justify-content-between">
+                                    {{container.name}}
+                                    <div>
+                                        <button class="" title="Console"><i class="fa fa-terminal"
+                                                                            aria-hidden="true"></i></button>
+                                        <button title="Logs"><i class="fa fa-list" aria-hidden="true"></i></button>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+<!-- /#page-content-wrapper -->
 
 </div>
+<!-- /#wrapper -->
 
+
+<!--<div id="app">-->
+
+<!--<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">-->
+<!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--<span class="navbar-toggler-icon"></span>-->
+<!--</button>-->
+<!--<a class="navbar-brand" href="#">Compost</a>-->
+<!--<button class="btn btn-outline-secondary"><i class="fa fa-play" aria-hidden="true"></i> Start existing application</button>-->
+<!--<button class="btn btn-outline-secondary"><i class="fa fa-plus" aria-hidden="true"></i> Add new application</button>-->
+<!--</nav>-->
+
+<!--<div class="container-fluid">-->
+<!--<h2>Dashboard</h2>-->
+<!--&lt;!&ndash; Example row of columns &ndash;&gt;-->
+<!--<div class="row">-->
+<!--<div v-for="project in projects" class="card">-->
+<!--<div class="card-header d-flex justify-content-between">-->
+<!--<span>{{project.name}}</span>-->
+<!--<span>-->
+<!--<i class="fa fa-2x fa-pause" aria-hidden="true"></i>-->
+<!--<i class="fa fa-2x fa-stop" aria-hidden="true"></i>-->
+<!--<i class="fa fa-2x fa-trash" aria-hidden="true"></i>-->
+<!--</span>-->
+<!--</div>-->
+<!--<ul class="list-group list-group-flush">-->
+<!--<li v-for="container in project.containers" class="list-group-item d-flex justify-content-between">-->
+<!--{{container.name}}-->
+<!--<div>-->
+<!--<button class="" title="Console"><i class="fa fa-terminal" aria-hidden="true"></i></button>-->
+<!--<button title="Logs"><i class="fa fa-list" aria-hidden="true"></i></button>-->
+<!--</div>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</div>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="http://cdn.jsdelivr.net/vue/1.0.16/vue.js"></script>
 <script src="https://cdn.jsdelivr.net/vue.resource/1.3.1/vue-resource.min.js"></script>
 

@@ -1,5 +1,5 @@
 var vm = new Vue({
-    el: '#app',
+    el: '#wrapper',
     data: {
         projects: []
     },
